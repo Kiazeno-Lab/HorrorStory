@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ang Mga Bata sa Kabanatan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Creepster', cursive;
+      padding: 20px;
+      transition: background 0.3s, color 0.3s;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .dark {
+      background-color: #111;
+      color: #f1f1f1;
+    }
+
+    .light {
+      background-color: #fff;
+      color: #111;
+    }
+
+    #chapter-container {
+      padding: 30px;
+      margin: 30px auto;
+      width: 95%;
+      max-width: 900px;
+      border: 2px solid red;
+      box-shadow: 0 0 25px red;
+      background-color: inherit;
+      border-radius: 10px;
+      min-height: 300px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 24px;
+      background: black;
+      color: red;
+      border: 1px solid red;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: red;
+      color: black;
+    }
+
+    .light button {
+      background: #eee;
+      color: #111;
+      border: 1px solid #999;
+    }
+
+    .light button:hover {
+      background: #ddd;
+      color: #000;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 50px;
+    }
+
+    h3 {
+      color: crimson;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    #theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
+    
+    .site-footer {
+    padding: 1.5rem;
+    text-align: center;
+    background-color: #0d0d0d;
+    border-top: 1px solid rgba(255, 0, 0, 0.2);
+    margin-top: 2rem;
+  }
+
+  .glitch-text {
+    position: relative;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    color: red;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .glitch-text::before {
+    animation: glitchTop 1.5s infinite linear alternate-reverse;
+    color: #ff00c8;
+  }
+
+  .glitch-text::after {
+    animation: glitchBottom 1.2s infinite linear alternate-reverse;
+    color: #00fff7;
+  }
+
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(5px, 9999px, 10px, 0); }
+  20% { clip: rect(0, 9999px, 5px, 0); }
+  30% { clip: rect(10px, 9999px, 15px, 0); }
+  40% { clip: rect(0, 9999px, 8px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(8px, 9999px, 12px, 0); }
+  20% { clip: rect(12px, 9999px, 18px, 0); }
+  30% { clip: rect(6px, 9999px, 12px, 0); }
+  40% { clip: rect(10px, 9999px, 16px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+  </style>
+</head>
+<body class="dark">
+
+  <button id="theme-toggle" onclick="toggleTheme()">☀️ Light Mode</button>
+
+  <h1>Ang Mga Bata sa Kabanatan</h1>
+
+  <div id="chapter-container">
+    <!-- Dito lalabas ang kabanata -->
+  </div>
+
+  <div style="text-align:center;">
+    <button onclick="prevChapter()">← Kabanata Bago</button>
+    <button onclick="nextChapter()">Susunod na Kabanata →</button>
+  </div>
+  
+  <footer class="site-footer">
+  <p class="glitch-text" data-text="🖋️ Written by Shairo">
+    🖋️ Written by Shairo
+  </p>
+</footer>
+  
+  <script>
+    const chapters = [
+  `<h3>KABANATA 1 – Ang Bahay na Walang Tunog</h3>
+  <p>Sa dulo ng Barangay Kabanatan, nakatayo ang isang bahay na luma na ngunit matibay pa rin sa paningin. Mula sa labas, para itong ordinaryong tahanan — may maliit na bakod, may upuan sa labas, at halaman sa gilid. Ngunit hindi ito dinadaanan ng mga bata. Hindi rin ito pinupuntahan ng mga tindero. Ayon sa matatanda, may dahilan kung bakit walang tunog na lumalabas mula roon. Ni huni ng ibon, ni ingay ng bubong — wala. Para bang hindi ito kabilang sa ating mundo.</p>
+  <p>Si Mang Celso, isang matandang basurero, ang laging dumadaan roon tuwing madaling araw. Ayon sa kanya, minsan daw may mga ilaw sa loob kahit wala namang kuryente. At minsan, may nakikita siyang bata sa bintana — nakatingin lang, pero hindi kumikilos. Nang minsang lakasan niya ang loob para sumilip, isang malamig na ihip ng hangin ang tumulak sa kanya paatras.</p>
+  <p>“May nakatira pa riyan,” aniya. “Pero hindi na tao.”</p>`,
+
+  `<h3>KABANATA 2 – Si Anatoly ang Tagabantay</h3>
+  <p>Ang lalaking nakatira sa bahay ay bihirang lumabas. Kung lalabas man, laging may suot na itim na coat at sombrero. Payat, maputla, at tila ba laging gutom sa tulog. Siya si Anatoly. Walang nakakaalam ng kanyang buong pangalan. Lahat ay natatakot, ngunit wala ring gustong umimik laban sa kanya.</p>
+  <p>Sabi ni Aling Rosa, minsang lumapit sa kanya si Anatoly upang bumili ng kandila. “Ang dami mong binili,” sabi niya. “May okasyon ba?”</p>
+  <p>Ngumiti lamang ito at sabay sabing, “Kaarawan ng mga anak ko.”</p>
+  <p>Ngunit alam ng lahat — wala siyang anak. Wala rin siyang asawa. Ngunit gabi-gabi, may mga batang tumatawa mula sa loob ng kanyang bahay.</p>`,
+
+  `<h3>KABANATA 3 – Ang Pasukan ng Isang Multo</h3>
+  <p>Naglalaro sina Mina, Jojo, at Carla sa harap ng bakuran. Larong habulan. Hanggang sa nabitawan ni Mina ang kanyang paboritong manika. Napunta ito sa mismong bakuran ng bahay ni Anatoly.</p>
+  <p>“Kunin mo na lang, bilis!” utos ni Carla.</p>
+  <p>Si Mina ay nanginginig ngunit pinilit ang sarili. Binuksan niya ang gate. Sa bawat hakbang, tila lumalalim ang lupa. Nang abutin niya ang manika, may malamig na kamay na humawak sa pulso niya.</p>
+  <p>Paglingon niya — wala. Ngunit pagbalik niya sa mga kaibigan, maputla siya at tahimik. Hindi na muling nagsalita si Mina mula noon.</p>
+  <p>Sa gabi ring iyon, nakita ni Mang Celso si Mina... nakatayo sa tabi ni Anatoly sa bintana, parehong nakangiti. Ngunit kinabukasan, si Mina ay nawala.</p>`,
+
+  `<h3>KABANATA 4 – May Nakatingin Mula sa Itaas</h3>
+  <p>Marami ang nagsimulang magpansin. Sa tuwing madilim na, may aninong laging nakadungaw sa pangalawang palapag ng bahay. Minsan bata, minsan matanda. Ngunit pare-pareho ang anyo: maputla, walang ekspresyon, at tila hindi kumikilos.</p>
+  <p>Isang araw, tinangkang kuhanan ng litrato ng isang vlogger ang bahay. Gamit ang drone, pinasok nila ang paligid. Ngunit nang mapunta ito sa bintana sa itaas, nag-blackout ang camera. Pagbalik nila sa footage, may mukha sa screen — mata lang, malalaki at pula, nakatingin diretso sa kanila.</p>
+  <p>Hindi na muling nag-vlog ang grupo.</p>`,
+
+  `<h3>KABANATA 5 – Ang Unang Bangungot</h3>
+  <p>Nagsimula na ring managinip ang mga tao sa baryo. Pare-pareho: nasa loob sila ng lumang bahay, may mga batang umiiyak, may mga laruan sa sahig, at may musika sa likod — musika ng lumang music box.</p>
+  <p>Ngunit sa gitna ng panaginip, may isang matanda na palaging naroon. Si Anatoly. Hawak ang kandila, at sinasabing: “Bantayan mo sila. Huwag mong hayaang mag-isa.”</p>
+  <p>Pagising ng mga nanaginip, lagi silang may marka ng kamay sa braso — parang hawak ng malamig na palad.</p>`,
+
+  `<h3>KABANATA 6 – Ang Mabahong Hangin</h3>
+  <p>Simula noong gabi ng pagkawalang ni Mina, iba na ang amoy ng hangin tuwing hatinggabi. Hindi basta amoy lupa o alikabok — kundi amoy bulok. Amoy pagkamatay. Pati ang mga alagang hayop ay nagiging mailap. Ang mga pusa ay ayaw dumaan sa tabi ng bahay. Ang mga aso’y tahol nang tahol na parang may nakita silang hindi matahimik na nilalang.</p>
+  <p>Isang bata ang nagtanong: “Ma, bakit amoy patay?”</p>
+  <p>Ang sagot ng ina: “Kasi may patay na hindi pa nililibing ng maayos.”</p> <p style="margin-top:40px; font-size:1.2rem; font-style: italic; color: gray;">More chapters soon...</p>`
+    ];
+
+    let current = 0;
+
+    function renderChapter() {
+      document.getElementById("chapter-container").innerHTML = chapters[current];
+    }
+
+    function nextChapter() {
+      if (current < chapters.length - 1) {
+        current++;
+        renderChapter();
+      }
+    }
+
+    function prevChapter() {
+      if (current > 0) {
+        current--;
+        renderChapter();
+      }
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.getElementById('theme-toggle');
+      body.classList.toggle('light');
+      body.classList.toggle('dark');
+
+      const isLight = body.classList.contains('light');
+      btn.textContent = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    window.onload = function () {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.body.classList.add(savedTheme);
+      document.body.classList.remove(savedTheme === 'light' ? 'dark' : 'light');
+      document.getElementById('theme-toggle').textContent = savedTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+      renderChapter();
+    };
+  </script>
+
+</body>
+</html>
